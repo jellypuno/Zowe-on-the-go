@@ -23,19 +23,19 @@ jobs:
             sudo npm install -g ionic cordova yarn --force
       - run:
           name: "Install npm packages"
-          working_directory: /app
           command: |
+            cd app
             yarn install
       - run:
           name: "Install Cordova plugins and add android platform"
-          working_directory: /app
           command: |
+            cd app
             ionic cordova platform add android --noresources
             ionic config set -g telemetry true
       - run:
           name: "Generate apk"
-          working_directory: /app
           command: |
+            cd app
             ionic cordova build android --verbose
             mkdir -p /tmp/apk
             cp -r platforms/android/app/build/outputs/apk/debug/app-debug.apk /tmp/apk
