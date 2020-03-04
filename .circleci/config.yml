@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/android:api-28-node8-alpha
-    working_directory: ~/repo
+    working_directory: ~/app
     environment:
       JVM_OPTS: -Xmx3200m
     steps:
@@ -19,7 +19,6 @@ jobs:
       - run:
           name: "Install ionic and cordova"
           command: |
-            cd app
             sudo npm install -g ionic cordova yarn --force
       - run:
           name: "Install npm packages"
